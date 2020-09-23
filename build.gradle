@@ -29,6 +29,9 @@ dependencies {
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.3.3.RELEASE'
 	compile group: 'com.yahoofinance-api', name: 'YahooFinanceAPI', version: '3.15.0'
 
+	compile group: 'de.codecentric', name: 'spring-boot-admin-starter-client', version: '2.3.0'
+
+
 	compile 'org.patriques:alphavantage4j:1.4'
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
