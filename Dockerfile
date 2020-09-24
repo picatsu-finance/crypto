@@ -7,4 +7,4 @@ WORKDIR /workspace/app
 
 COPY $jar app.jar
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=prd",  "app.jar"]

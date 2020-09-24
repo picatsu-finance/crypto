@@ -1,0 +1,34 @@
+
+api:
+  key: '63NJUA45A97BF6OI'
+  timeout: 3000
+
+server:
+  port: 8001
+
+
+spring:
+  application:
+    name: Finance-crypto
+
+  main:
+    allow-bean-definition-overriding: true
+  boot:
+    admin:
+      client:
+        url: http://94.239.109.172:9090
+        instance:
+          management-url: http://94.239.109.172:9090/actuator
+          health-url: http://94.239.109.172:9090/actuator/health
+          service-url: http://94.239.109.172:9090
+
+management:
+  security:
+    enabled: false
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
