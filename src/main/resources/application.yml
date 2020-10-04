@@ -30,7 +30,7 @@ spring:
 
 rest:
   security:
-    issuer-uri: http://94.239.109.172:8080/auth/realms/dev
+    issuer-uri: http://94.239.109.172:8080/auth/realms/Finance
     api-matcher: /api/**
     cors:
       allowed-headers: '*'
@@ -38,6 +38,13 @@ rest:
       allowed-origins: '*'
       max-age: 3600
     enabled: true
+
+keycloak:
+  auth-server-url: http://94.239.109.172:8080/auth
+  principal-attribute: preferred_username
+  public-client: false
+  realm: Finance
+  resource: finance-client
 
 security:
   oauth2:

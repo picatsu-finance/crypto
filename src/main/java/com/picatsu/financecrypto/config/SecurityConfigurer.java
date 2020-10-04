@@ -70,12 +70,12 @@ public class SecurityConfigurer extends ResourceServerConfigurerAdapter {
         return new JwtAccessTokenCustomizer(mapper);
     }
 
-    @Bean
+    /*@Bean
     public OAuth2RestTemplate oauth2RestTemplate(OAuth2ProtectedResourceDetails details) {
         OAuth2RestTemplate oAuth2RestTemplate = new OAuth2RestTemplate(details);
 
         //Prepare by getting access token once
         oAuth2RestTemplate.getAccessToken();
         return oAuth2RestTemplate;
-    }
+    }*/
 }
