@@ -11,6 +11,12 @@ spring:
   application:
     name: Finance-crypto
 
+  data:
+    mongodb:
+      uri: mongodb+srv://financeclusteradmin:?DB12541@cluster0.z8e18.gcp.mongodb.net/finance_crypto?retryWrites=true&w=majority
+      database: finance_crypto
+
+
   main:
     allow-bean-definition-overriding: true
   boot:
