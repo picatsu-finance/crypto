@@ -6,17 +6,14 @@ api:
 server:
   port: 8001
 
-
+logging.level.org.springframework.security: DEBUG
 spring:
   application:
     name: Finance-crypto
-
   data:
     mongodb:
       uri: mongodb+srv://financeclusteradmin:?DB12541@cluster0.z8e18.gcp.mongodb.net/finance_crypto?retryWrites=true&w=majority
       database: finance_crypto
-
-
   main:
     allow-bean-definition-overriding: true
   boot:
@@ -28,42 +25,17 @@ spring:
           health-url: http://localhost:9090/actuator/health
           service-url: http://localhost:9090
 
-rest:
-  security:
-    issuer-uri: http://94.239.109.172:8080/auth/realms/Finance
-    api-matcher: /api/**
-    cors:
-      allowed-headers: '*'
-      allowed-methods: GET,POST,PUT,PATCH,DELETE,OPTIONS
-      allowed-origins: '*'
-      max-age: 3600
-    enabled: true
 
 keycloak:
-  auth-server-url: http://94.239.109.172:8080/auth
-  principal-attribute: preferred_username
-  public-client: false
   realm: Finance
+  auth-server-url: http://94.239.109.172:8080/auth
+  ssl-required: external
   resource: finance-client
+  credentials:
+    secret: e2d93343-885b-4620-b9d2-147c4e82f852
+  use-resource-role-mappings: true
+  bearer-only: true
 
-security:
-  oauth2:
-    resource:
-      id: finance-client
-      jwt:
-        key-value: |-
-          -----BEGIN PUBLIC KEY-----
-          MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAi0pV5MC0UPOZHoi34wjkNQ0YNi6qvj9/TQlCFz75qxKF1WD7wOkjOaBwla0mGqzvCgcnq6HfMAn7frUL16oxFMBUjNTCAdMs3/KmbtHc3k7qWKsF/wAxL7XKYtX3ONQfXetcdBikYR6UCEaBWhFotsR8CmoU4sutMMG82L63ei5qw6Y3lruLmLr8zOB5cvbRPTkXnx0xr1rg/gzIq6a/Hkm0UpynPRGO/b9kzQzzPgC0/x/4KkmS24eN2FInvh4TmE67Mrdtpig8A/HobLxIZiJBOY3oGdKHjTpMGg0VAQFuapCkyunY0VpUyKXFyjCEvRZeWfQ6BSzezjed/ZjTbwIDAQAB
-          -----END PUBLIC KEY-----
-      token-info-uri: ${rest.security.issuer-uri}/protocol/openid-connect/token/introspect
-      user-info-uri: ${rest.security.issuer-uri}/protocol/openid-connect/userinfo
-    client:
-      access-token-uri: ${rest.security.issuer-uri}/protocol/openid-connect/token
-      client-id: finance-client
-      client-secret: e2d93343-885b-4620-b9d2-147c4e82f852
-      grant-type: client_credentials
-      scope: openid
-      user-authorization-uri: ${rest.security.issuer-uri}/protocol/openid-connect/auth
 
 management:
   security:
