@@ -6,10 +6,12 @@ api:
 server:
   port: 8001
 
-logging.level.org.springframework.security: DEBUG
 spring:
   application:
     name: Finance-crypto
+  output:
+    ansi:
+      enabled: ALWAYS
   data:
     mongodb:
       uri: mongodb+srv://financeclusteradmin:?DB12541@cluster0.z8e18.gcp.mongodb.net/finance_crypto?retryWrites=true&w=majority
@@ -25,6 +27,7 @@ spring:
           health-url: http://localhost:9090/actuator/health
           service-url: http://localhost:9090
 
+logging.level.org.springframework.security: DEBUG
 
 keycloak:
   realm: Finance
