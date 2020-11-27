@@ -1,0 +1,37 @@
+server:
+  port: 8001
+
+
+spring:
+  application:
+    name: $NAME
+  main:
+    allow-bean-definition-overriding: true
+  output:
+    ansi:
+      enabled: ALWAYS
+  boot:
+    admin:
+      client:
+        url: $link
+        instance:
+          management-url: $link/actuator
+          health-url: $link/health
+          service-url: $link
+  data:
+    mongodb:
+      uri: $link
+      database: $dbname
+
+logging.level.org.springframework.security: DEBUG
+
+management:
+  security:
+    enabled: false
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'

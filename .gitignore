@@ -32,3 +32,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+src/main/resources/application-prd.yml
+src/main/resources/application.yml
