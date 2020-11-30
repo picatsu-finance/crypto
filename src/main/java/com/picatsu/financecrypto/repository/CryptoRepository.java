@@ -11,4 +11,6 @@ public interface CryptoRepository  extends MongoRepository<CryptoModel, String> 
 
     List<CryptoModel> findBySymbolContainsIgnoreCase(String val);
     List<CryptoModel> findByNameContainsIgnoreCase(String val);
+    long deleteAllBySymbol(String symbol);
+
 }

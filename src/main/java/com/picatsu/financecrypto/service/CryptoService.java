@@ -42,6 +42,28 @@ public class CryptoService {
     @Autowired
     private CustomFunctions customFunctions;
 
+    public void daily(String product) { // NOT WORKING
+        DigitalCurrencies digitalCurrencies = new DigitalCurrencies(apiConnector);
+
+        try {
+            IntraDay response = digitalCurrencies.intraDay(product, Market.USD);
+            Map<String, String> metaData = response.getMetaData();
+            System.out.println("Information: " + metaData.get("1. Information"));
+            System.out.println("Digital Currency Code: " + metaData.get("2. Digital Currency Code"));
+
+            List<SimpelDigitalCurrencyData> digitalData = response.getDigitalData();
+            digitalData.forEach(data -> {
+                System.out.println("date:       " + data.getDateTime());
+                System.out.println("price A:    " + data.getPriceA());
+                System.out.println("price B:    " + data.getPriceB());
+                System.out.println("volume:     " + data.getVolume());
+                System.out.println("market cap: " + data.getMarketCap());
+            });
+        } catch (AlphaVantageException e) {
+            System.out.println("something went wrong");
+        }
+    }
+
 
     public JsonNode findPrice(String symbol, String forex) throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
@@ -55,6 +77,18 @@ public class CryptoService {
         JsonNode root = mapper.readTree(response.getBody());
         return root;
 
+    }
+
+    public JsonNode getDetailsByCode(String symbol, String market) throws JsonProcessingException {
+        RestTemplate restTemplate = new RestTemplate();
+        String fooResourceUrl
+                = BASE_URL_YAHOO+"&symbols="+symbol+"-"+market;
+        ResponseEntity<String> response
+                = restTemplate.getForEntity(fooResourceUrl , String.class);
+
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root = mapper.readTree(response.getBody());
+        return root;
 
     }
 
