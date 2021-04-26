@@ -9,4 +9,4 @@ docker push ezzefiohez/finance-crypto
 
 echo " ######## BUILD CRYPTO DONE ######## "
 
-curl  -X POST http://94.239.109.172:9000/api/webhooks/e2950929-7f5c-402f-aa41-2f6e43b1c67a
+curl  -X POST http://146.59.195.214:9000/api/webhooks/102fbc39-e65a-42e3-b614-ca2fc2585396

@@ -6,17 +6,16 @@ api:
 server:
   port: 8001
 
-
 spring:
   application:
     name: Finance-crypto
-
+  output:
+    ansi:
+      enabled: ALWAYS
   data:
     mongodb:
-      uri: mongodb+srv://financeclusteradmin:?DB12541@cluster0.z8e18.gcp.mongodb.net/finance_crypto?retryWrites=true&w=majority
-      database: finance_crypto
-
-
+      uri: mongodb://financeuser:financepassword5000@146.59.195.214:27017/finance?retryWrites=true&w=majority
+      database: finance
   main:
     allow-bean-definition-overriding: true
   boot:
@@ -24,21 +23,12 @@ spring:
       client:
         url: http://146.59.195.214:9090
         instance:
-          management-url: http://94.239.109.172:8001/actuator
-          health-url: http://94.239.109.172:8001/actuator/health
-          service-url: http://94.239.109.172:8001/
+          management-url: http://146.59.195.214:9090/actuator
+          health-url: http://146.59.195.214:9090/actuator/health
+          service-url: http://146.59.195.214:9090
 
 logging.level.org.springframework.security: DEBUG
 
-keycloak:
-  realm: Finance
-  auth-server-url: http://94.239.109.172:8080/auth
-  ssl-required: external
-  resource: finance-client
-  credentials:
-    secret: e2d93343-885b-4620-b9d2-147c4e82f852
-  use-resource-role-mappings: true
-  bearer-only: true
 
 management:
   security:

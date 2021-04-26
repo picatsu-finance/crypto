@@ -42,6 +42,14 @@ public class CryptoController {
     private CryptoRepository cryptoRepository;
 
 
+    @GetMapping(value = "/test")
+    @Operation(summary = "get crypto price ")
+    public Object test( )  {
+        log.info("/price/{symbol}/{cryptoCode} ");
+
+        return  "TEST ";
+    }
+
     @GetMapping(value = "/price/{symbol}/{cryptoCode}")
     @Operation(summary = "get crypto price ")
     public JsonNode getByCodeAndCrypto(@PathVariable String symbol, @PathVariable String cryptoCode )

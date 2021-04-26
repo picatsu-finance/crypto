@@ -21,7 +21,7 @@ public class Config {
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
                 .info(new Info()
-                        .title("Swagger doc for the Finance-Crypto project")
+                        .title("Swagger doc for the Finance project")
                         .version("0.0.1")
                         .description("Finance Crypto Ash project")
                         .termsOfService("http://swagger.io/terms/")
